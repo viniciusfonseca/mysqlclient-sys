@@ -3,6 +3,13 @@ mysqlclient-sys: static version
 
 This Unix-only fork of [mysqlclient-sys](https://github.com/sgrif/mysqlclient-sys) contains prebuilt static binary `libmariadbclient.a` (which is compatible with `libmysqlclient.a`) and links to it. You can rebuild the binary - see `vagga.yaml` for an Alpine container instruction and `native/build.sh` for build commands.
 
+To use it in your Diesel project, add this to `Cargo.toml`:
+
+```toml
+[patch.crates-io]
+mysqlclient-sys = { git = "https://github.com/pzmarzly/mysqlclient-sys", rev = "acd1b2b" }
+```
+
 Tested with musl + Rocket + diesel! (Tip: install `musl-gcc` and put
 
 ```toml
