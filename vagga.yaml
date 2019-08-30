@@ -1,0 +1,14 @@
+containers:
+  main:
+    setup:
+    - !Alpine v3.5
+    - !Install [bash, curl, make, cmake, gcc, musl-dev]
+commands:
+  shell: !Command
+    container: main
+    work-dir: native
+    run: [bash]
+  build: !Command
+    container: main
+    work-dir: native
+    run: [./build.sh]
